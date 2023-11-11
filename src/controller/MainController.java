@@ -12,7 +12,7 @@ import view.MainView;
  * @author bruno
  */
 public class MainController {
-    public static void init(HashMap<String, String> parametros) {
+    public static void init(HashMap<String, String> parameters) {
         MainView.init();
     }
 }

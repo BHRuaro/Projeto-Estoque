@@ -1,11 +1,6 @@
 package view;
 
-import java.util.HashMap;
-
-import javax.swing.JOptionPane;
-
-import model.Operador;
-import model.OperadorDAO;
+import controller.OperadorController;
 
 /**
  *
@@ -32,16 +27,8 @@ public class MainView {
     // operadorDAO.adiciona(operador);
 
     public static void init() {
-        HashMap<String, String> parametros = new HashMap<>();
-        int opcao = 0;
-        String user, password;
 
-        user = JOptionPane.showInputDialog("Digite o nome do usuário:");
-        password = JOptionPane.showInputDialog("Digite a senha do usuário:");
-        parametros.put("user", user);
-        parametros.put("password", password);
-        OperadorDAO.login(parametros);
-
+        OperadorController.validateLogin();
         // opcao = Integer.parseInt(JOptionPane.showInputDialog(
         // "Escolha uma opção:\n1 - Cadastrar usuário\n2 - Cadastrar produto\n3 -
         // Movimentações\n4 - Histórico\n5 - Sair do sistema\n"));

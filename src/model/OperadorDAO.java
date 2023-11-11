@@ -57,18 +57,20 @@ public class OperadorDAO {
         this.em.getTransaction().commit();
     }
 
-    public static void login(HashMap<String, String> parametros) {
-        int opcao = 0;
-
-        String user = parametros.get("user");
-        String password = parametros.get("password");
+    public static boolean login(HashMap<String, String> parameters) {
+        String user = parameters.get("user");
+        String password = parameters.get("password");
         OperadorDAO operadorDAO = new OperadorDAO();
         List<Operador> operadores = operadorDAO.lista();
         for (Operador operador : operadores) {
             if (operador.getNome().equals(user) && operador.getSenha().equals(password)) {
                 JOptionPane.showMessageDialog(null, "Login realizado com sucesso", "LOGADO!!", 1);
-                break;
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Verifique os campos Usuário e Senha", "Erro ao logar", 2);
+                return false;
             }
         }
+        return false;
     }
 }
