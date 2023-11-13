@@ -1,6 +1,9 @@
 package view;
 
 import controller.OperadorController;
+import controller.MainController;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,6 +17,7 @@ public class MainView {
     // Movimentacoes (entrada e saida de produtos para usuarios),
     // Historico (Usuario: inclusao/alterao/delecao, Produto:
     // -----------inclusao/alterao/delecao, Movimentacao: entrada e saida)
+    // Relatorios: Usuario e produto
     // Sair do sistema
 
     // Operador operador = new Operador();
@@ -25,14 +29,21 @@ public class MainView {
     // OperadorDAO operadorDAO = new OperadorDAO();
     // operadorDAO.adiciona(operador);
 
-    public static void init() {
-
+    public static void login() {
         do {
-            OperadorController.validateLogin();
         } while (OperadorController.validateLogin() == false);
-        // opcao = Integer.parseInt(JOptionPane.showInputDialog(
-        // "Escolha uma opção:\n1 - Cadastrar usuário\n2 - Cadastrar produto\n3 -
-        // Movimentações\n4 - Histórico\n5 - Sair do sistema\n"));
+    }
+
+    public static void init() {
+        int destino = 0;
+        HashMap<String, String> parameters = new HashMap<>();
+
+        destino = Integer.parseInt(JOptionPane.showInputDialog(
+                "Escolha uma opção:\n1 - Usuários\n2 - Itens\n3 - Movimentações\n4 - Histórico\n5 - Sair do sistema\n(Informe uma opção)"));
+
+        parameters.put("destino", String.valueOf(destino));
+
+        MainController.goTo(parameters);
     }
 
 }

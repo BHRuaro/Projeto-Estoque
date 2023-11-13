@@ -2,15 +2,12 @@ package model;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Logger;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Query;
 import javax.swing.JOptionPane;
 
 public class OperadorDAO {
     private final DAO<Operador> dao;
     private EntityManager em;
-    private static final Logger LOGGER = Logger.getLogger(JpaUtil.class.getName());
 
     public OperadorDAO() {
         this.em = JpaUtil.getEmPostgres();
@@ -36,18 +33,6 @@ public class OperadorDAO {
 
     public Operador busca(Integer id) {
         return dao.busca(id);
-    }
-
-    public List<Operador> buscaPorNome(String nome) {
-        List<Operador> result = null;
-        try {
-            Query query = em.createQuery("select x from operador x where x.nome like :parametro ");
-            query.setParameter("parametro", "%" + nome + "%");
-            result = query.getResultList();
-        } catch (Exception ex) {
-            LOGGER.severe(ex.getMessage());
-        }
-        return result;
     }
 
     public void removeAll() {

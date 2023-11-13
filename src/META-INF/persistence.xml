@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence           http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
   <persistence-unit name="ProjetoEstoquePU" transaction-type="RESOURCE_LOCAL">
-    <class>model.Operador</class>
-    <class>model.OperadorView</class>
-    <class>model.OperadorDAO</class>
     <class>model.DAO</class>
     <class>model.JpaUtil</class>
+    <class>model.OperadorDAO</class>
+    <class>model.Operador</class>
+    <class>model.ItemDAO</class>
+    <class>model.Item</class>
+    <class>model.UsuarioDAO</class>
+    <class>model.Usuario</class>
+    <class>model.MovimentacaoDAO</class>
+    <class>model.Movimentacao</class>
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <properties>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/ProjetoEstoque"/>
