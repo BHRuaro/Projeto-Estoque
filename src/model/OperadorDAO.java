@@ -66,11 +66,9 @@ public class OperadorDAO {
             if (operador.getNome().equals(user) && operador.getSenha().equals(password)) {
                 JOptionPane.showMessageDialog(null, "Login realizado com sucesso", "LOGADO!!", 1);
                 return true;
-            } else {
-                JOptionPane.showMessageDialog(null, "Verifique os campos Usuário e Senha", "Erro ao logar", 2);
-                return false;
             }
         }
+        JOptionPane.showMessageDialog(null, "Verifique os campos Usuário e Senha", "Erro ao logar", 2);
         return false;
     }
 }

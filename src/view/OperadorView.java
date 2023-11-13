@@ -21,6 +21,7 @@ public class OperadorView {
         password = JOptionPane.showInputDialog("Digite a senha do usuário:");
         parameters.put("user", user);
         parameters.put("password", password);
+
         return parameters;
     }
 }
