@@ -36,11 +36,35 @@ public class UsuarioDAO {
         return dao.busca(id);
     }
 
-    public List<Usuario> buscaPorNome(String nome) {
+    public List<Usuario> searchName(String nome) {
         List<Usuario> result = null;
         try {
-            Query query = em.createQuery("select x from usuario x where x.nome like :parametro ");
-            query.setParameter("parametro", "%" + nome + "%");
+            Query query = em.createQuery("select x from usuario x where x.nome like :parametro");
+            query.setParameter("parametro", "'%" + nome + "%'");
+            result = query.getResultList();
+        } catch (Exception ex) {
+            LOGGER.severe(ex.getMessage());
+        }
+        return result;
+    }
+
+    public List<Usuario> searchCPF(String cpf) {
+        List<Usuario> result = null;
+        try {
+            Query query = em.createQuery("select x from usuario x where x.cpf ilike :parametro ");
+            query.setParameter("parametro", "%" + cpf + "%");
+            result = query.getResultList();
+        } catch (Exception ex) {
+            LOGGER.severe(ex.getMessage());
+        }
+        return result;
+    }
+
+    public List<Usuario> searchEmail(String email) {
+        List<Usuario> result = null;
+        try {
+            Query query = em.createQuery("select x from usuario x where x.email ilike :parametro ");
+            query.setParameter("parametro", "%" + email + "%");
             result = query.getResultList();
         } catch (Exception ex) {
             LOGGER.severe(ex.getMessage());

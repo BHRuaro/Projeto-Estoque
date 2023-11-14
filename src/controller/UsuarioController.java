@@ -1,12 +1,12 @@
 package controller;
 
-import java.util.HashMap;
-
+import java.util.*;
 import model.Usuario;
 import model.UsuarioDAO;
 import view.UsuarioView;
 
 public class UsuarioController {
+    private static UsuarioDAO usuarioDAO = new UsuarioDAO();
 
     public static void init() {
         UsuarioView.init();
@@ -17,8 +17,8 @@ public class UsuarioController {
 
         switch (destino) {
             case 1 -> UsuarioController.register();
-            // case 2 -> UsuarioController.list();
-            // case 3 -> UsuarioController.search();
+            case 2 -> UsuarioController.list();
+            case 3 -> UsuarioController.requestSearch();
             // case 4 -> UsuarioController.update();
             // case 5 -> UsuarioController.remove();
             case 6 -> MainController.init();
@@ -41,13 +41,42 @@ public class UsuarioController {
         UsuarioView.init();
     }
 
-    // public static void list() {
-    // UsuarioView.list();
-    // }
+    public static void list() {
+        List<Usuario> listaUsuario = usuarioDAO.list();
+        UsuarioView.list(listaUsuario);
+    }
 
-    // public static void search() {
-    // UsuarioView.search();
-    // }
+    public static void requestSearch() {
+        UsuarioView.requestSearch();
+    }
+
+    public static void search(HashMap<String, String> params) {
+        int opcao = Integer.parseInt(params.get("opcao"));
+        Usuario usuario = null;
+        switch (opcao) {
+            case 1:
+                usuario = usuarioDAO.busca(Integer.parseInt(params.get("codigo")));
+                UsuarioView.list(Arrays.asList(usuario));
+                break;
+            case 2:
+                List<Usuario> listaUsuarioNome = usuarioDAO.searchName(params.get("nome"));
+                UsuarioView.list(listaUsuarioNome);
+                break;
+            case 3:
+                List<Usuario> listaUsuarioCPF = usuarioDAO.searchCPF(params.get("cpf"));
+                UsuarioView.list(listaUsuarioCPF);
+                break;
+            case 4:
+                List<Usuario> listaUsuarioEmail = usuarioDAO.searchEmail(params.get("email"));
+                UsuarioView.list(listaUsuarioEmail);
+                break;
+            case 5:
+                UsuarioView.init();
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
 
     // public static void remove() {
     // UsuarioView.remove();
