@@ -13,7 +13,7 @@ public class UsuarioView {
 
         opcao = Integer.parseInt(
                 JOptionPane.showInputDialog(null,
-                        "1 - Cadastrar\n2 - Listar\n3 - Buscar\n4- Atualizar\n5 - Remover\n6 - Voltar"));
+                        "1 - Cadastrar\n2 - listr\n3 - Buscar\n4- Atualizar\n5 - Remover\n6 - Voltar"));
 
         parametros.put("opcao", String.valueOf(opcao));
 

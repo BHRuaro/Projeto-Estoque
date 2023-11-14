@@ -15,21 +15,21 @@ public class UsuarioDAO {
         this.dao = new DAO<Usuario>(em, Usuario.class);
     }
 
-    public void adiciona(Usuario usuario) {
-        this.dao.adiciona(usuario);
+    public void add(Usuario usuario) {
+        this.dao.add(usuario);
     }
 
     public void remove(Usuario usuario) {
         this.dao.remove(usuario);
     }
 
-    public Usuario atualiza(Usuario usuario) {
-        usuario = this.dao.atualiza(usuario);
+    public Usuario update(Usuario usuario) {
+        usuario = this.dao.update(usuario);
         return usuario;
     }
 
-    public List<Usuario> lista() {
-        return this.dao.lista();
+    public List<Usuario> list() {
+        return this.dao.list();
     }
 
     public Usuario busca(Integer id) {

@@ -14,21 +14,21 @@ public class OperadorDAO {
         this.dao = new DAO<Operador>(em, Operador.class);
     }
 
-    public void adiciona(Operador operador) {
-        this.dao.adiciona(operador);
+    public void add(Operador operador) {
+        this.dao.add(operador);
     }
 
     public void remove(Operador operador) {
         this.dao.remove(operador);
     }
 
-    public Operador atualiza(Operador operador) {
-        operador = this.dao.atualiza(operador);
+    public Operador update(Operador operador) {
+        operador = this.dao.update(operador);
         return operador;
     }
 
-    public List<Operador> lista() {
-        return this.dao.lista();
+    public List<Operador> list() {
+        return this.dao.list();
     }
 
     public Operador busca(Integer id) {
@@ -46,7 +46,7 @@ public class OperadorDAO {
         String user = parameters.get("user");
         String password = parameters.get("password");
         OperadorDAO operadorDAO = new OperadorDAO();
-        List<Operador> operadores = operadorDAO.lista();
+        List<Operador> operadores = operadorDAO.list();
         for (Operador operador : operadores) {
             if (operador.getNome().equals(user) && operador.getSenha().equals(password)) {
                 JOptionPane.showMessageDialog(null, "Login realizado com sucesso", "LOGADO!!", 1);

@@ -36,7 +36,7 @@ public class UsuarioController {
         usuario.setCpf(params.get("cpf"));
         usuario.setEmail(params.get("email"));
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        usuarioDAO.adiciona(usuario);
+        usuarioDAO.add(usuario);
 
         UsuarioView.init();
     }

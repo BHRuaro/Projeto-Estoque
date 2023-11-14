@@ -19,11 +19,11 @@ public class DAO<T> {
         return this.em.getReference(classe, id);
     }
 
-    public List<T> lista() {
+    public List<T> list() {
         return em.createQuery("select a from " + classe.getName() + " a", classe).getResultList();
     }
 
-    public void adiciona(T t) {
+    public void add(T t) {
         this.em.getTransaction().begin();
         this.em.persist(t);
         this.em.flush();
@@ -37,7 +37,7 @@ public class DAO<T> {
         this.em.getTransaction().commit();
     }
 
-    public T atualiza(T t) {
+    public T update(T t) {
         this.em.getTransaction().begin();
         t = this.em.merge(t);
         this.em.flush();

@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 public class MainView {
     // Login nome + senha do operador
     // Menu com:
-    // Cadastro de usuario (incluir, atualizar, buscar e deletar),
-    // Cadastro de produto (incluir, atualizar, buscar e deletar),
+    // Cadastro de usuario (incluir, updater, buscar e deletar),
+    // Cadastro de produto (incluir, updater, buscar e deletar),
     // Movimentacoes (entrada e saida de produtos para usuarios),
     // Historico (Usuario: inclusao/alterao/delecao, Produto:
     // -----------inclusao/alterao/delecao, Movimentacao: entrada e saida)
@@ -27,7 +27,7 @@ public class MainView {
     // operador.setData_contratacao(new java.sql.Date(System.currentTimeMillis()));
     // operador.setSalario((float) 1500.92);
     // OperadorDAO operadorDAO = new OperadorDAO();
-    // operadorDAO.adiciona(operador);
+    // operadorDAO.add(operador);
 
     public static void login() {
         do {
