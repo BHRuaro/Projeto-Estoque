@@ -1,7 +1,7 @@
 package model;
 
 import java.util.*;
-import jakarta.persistence.EntityManager;
+
 import jakarta.persistence.*;
 
 public class DAO<T> {
@@ -15,7 +15,7 @@ public class DAO<T> {
         this.classe = classe;
     }
 
-    public T busca(Integer id) {
+    public T find(Integer id) {
         return this.em.getReference(classe, id);
     }
 

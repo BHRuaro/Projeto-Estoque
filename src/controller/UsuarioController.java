@@ -55,7 +55,7 @@ public class UsuarioController {
         Usuario usuario = null;
         switch (opcao) {
             case 1:
-                usuario = usuarioDAO.busca(Integer.parseInt(params.get("codigo")));
+                usuario = usuarioDAO.find(Integer.parseInt(params.get("codigo")));
                 UsuarioView.list(Arrays.asList(usuario));
                 break;
             case 2:
@@ -98,9 +98,10 @@ public class UsuarioController {
 
         parametros = UsuarioView.remove();
 
-        Usuario usuario = new Usuario();
-        usuario.setUsuario_id(Integer.parseInt(parametros.get("codigo")));
+        int usuario_id = Integer.parseInt(parametros.get("codigo"));
+        Usuario usuario = usuarioDAO.find(usuario_id);
         if (usuario != null) {
+            usuario = usuarioDAO.merge(usuario);
             usuarioDAO.remove(usuario);
         }
 

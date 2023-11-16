@@ -32,8 +32,8 @@ public class UsuarioDAO {
         return this.dao.list();
     }
 
-    public Usuario busca(Integer id) {
-        return dao.busca(id);
+    public Usuario find(Integer id) {
+        return dao.find(id);
     }
 
     public List<Usuario> searchName(String nome) {
@@ -77,5 +77,9 @@ public class UsuarioDAO {
         this.em.createQuery("delete from usuario").executeUpdate();
         this.em.flush();
         this.em.getTransaction().commit();
+    }
+
+    public Usuario merge(Usuario usuario) {
+        return this.em.merge(usuario);
     }
 }

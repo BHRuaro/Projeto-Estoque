@@ -32,7 +32,7 @@ public class OperadorDAO {
     }
 
     public Operador busca(Integer id) {
-        return dao.busca(id);
+        return dao.find(id);
     }
 
     public void removeAll() {
