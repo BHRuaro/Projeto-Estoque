@@ -39,7 +39,7 @@ public class UsuarioDAO {
     public List<Usuario> searchName(String nome) {
         List<Usuario> result = null;
         try {
-            Query query = em.createQuery("select x from usuario x where x.nome like :parametro");
+            Query query = em.createQuery("select x from Usuario x where x.nome like :parametro");
             query.setParameter("parametro", "%" + nome + "%");
             result = query.getResultList();
         } catch (Exception ex) {
@@ -51,7 +51,7 @@ public class UsuarioDAO {
     public List<Usuario> searchCPF(String cpf) {
         List<Usuario> result = null;
         try {
-            Query query = em.createQuery("select x from usuario x where x.cpf like :parametro ");
+            Query query = em.createQuery("select x from Usuario x where x.cpf like :parametro ");
             query.setParameter("parametro", "%" + cpf + "%");
             result = query.getResultList();
         } catch (Exception ex) {
@@ -63,7 +63,7 @@ public class UsuarioDAO {
     public List<Usuario> searchEmail(String email) {
         List<Usuario> result = null;
         try {
-            Query query = em.createQuery("select x from usuario x where x.email like :parametro ");
+            Query query = em.createQuery("select x from Usuario x where x.email like :parametro ");
             query.setParameter("parametro", "%" + email + "%");
             result = query.getResultList();
         } catch (Exception ex) {

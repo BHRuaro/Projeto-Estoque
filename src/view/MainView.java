@@ -20,18 +20,11 @@ public class MainView {
     // Relatorios: Usuario e produto
     // Sair do sistema
 
-    // Operador operador = new Operador();
-    // operador.setNome("Bruno");
-    // operador.setSenha("123456");
-    // operador.setCargo("Administrador");
-    // operador.setData_contratacao(new java.sql.Date(System.currentTimeMillis()));
-    // operador.setSalario((float) 1500.92);
-    // OperadorDAO operadorDAO = new OperadorDAO();
-    // operadorDAO.add(operador);
-
     public static void login() {
+        boolean login = false;
         do {
-        } while (OperadorController.validateLogin() == false);
+            login = OperadorController.validateLogin();
+        } while (login == false);
     }
 
     public static void init() {

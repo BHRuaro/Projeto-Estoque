@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
 import java.util.HashMap;
 import view.MainView;
 
-/**
- *
- * @author bruno
- */
 public class MainController {
 
     public static void login() {
@@ -27,7 +19,7 @@ public class MainController {
 
         switch (destino) {
             case 1 -> UsuarioController.init();
-            // case 2 -> ItemController.register();
+            case 2 -> ItemController.init();
             // case 3 -> MovimentacaoController.register();
             // case 4 -> HistoricoController.register();
             case 5 -> System.exit(0);

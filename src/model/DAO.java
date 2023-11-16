@@ -1,7 +1,6 @@
 package model;
 
 import java.util.*;
-
 import jakarta.persistence.*;
 
 public class DAO<T> {
