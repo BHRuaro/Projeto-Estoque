@@ -17,8 +17,8 @@ public class OperadorView {
     public static HashMap<String, String> requestLogin() {
         String user, password;
 
-        user = JOptionPane.showInputDialog("Digite o nome do usuário:");
-        password = JOptionPane.showInputDialog("Digite a senha do usuário:");
+        user = JOptionPane.showInputDialog("Digite o nome do operador:");
+        password = JOptionPane.showInputDialog("Digite a senha do operador:");
         parameters.put("user", user);
         parameters.put("password", password);
 

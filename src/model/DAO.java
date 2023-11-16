@@ -44,13 +44,4 @@ public class DAO<T> {
         this.em.getTransaction().commit();
         return t;
     }
-
-    // Como implementar sendo que cada classe utiliza id diferente?
-    public void removeQuery(T t, Integer chave) {
-        this.em.getTransaction().begin();
-        this.em.createQuery("delete from " + classe.getName() + " where " + chave + " = " + t);
-        this.em.flush();
-        this.em.getTransaction().commit();
-    }
-
 }

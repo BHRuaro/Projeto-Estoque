@@ -19,8 +19,8 @@ public class UsuarioController {
             case 1 -> UsuarioController.register();
             case 2 -> UsuarioController.list();
             case 3 -> UsuarioController.requestSearch();
-            // case 4 -> UsuarioController.update();
-            // case 5 -> UsuarioController.remove();
+            case 4 -> UsuarioController.update();
+            case 5 -> UsuarioController.remove();
             case 6 -> MainController.init();
             default -> throw new AssertionError();
         }
@@ -78,11 +78,33 @@ public class UsuarioController {
         }
     }
 
-    // public static void remove() {
-    // UsuarioView.remove();
-    // }
+    public static void update() {
+        HashMap<String, String> parametros = new HashMap<>();
 
-    // public static void update() {
-    // UsuarioView.update();
-    // }
+        parametros = UsuarioView.update();
+
+        Usuario usuario = new Usuario();
+        usuario.setUsuario_id(Integer.parseInt(parametros.get("codigo")));
+        usuario.setNome(parametros.get("nome"));
+        usuario.setCpf(parametros.get("cpf"));
+        usuario.setEmail(parametros.get("email"));
+        usuarioDAO.update(usuario);
+
+        UsuarioView.init();
+    }
+
+    public static void remove() {
+        HashMap<String, String> parametros = new HashMap<>();
+
+        parametros = UsuarioView.remove();
+
+        Usuario usuario = new Usuario();
+        usuario.setUsuario_id(Integer.parseInt(parametros.get("codigo")));
+        if (usuario != null) {
+            usuarioDAO.remove(usuario);
+        }
+
+        UsuarioView.init();
+    }
+
 }

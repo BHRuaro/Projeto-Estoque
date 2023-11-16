@@ -12,7 +12,7 @@ public class UsuarioView {
 
         opcao = Integer.parseInt(
                 JOptionPane.showInputDialog(null,
-                        "1 - Cadastrar\n2 - Listar\n3 - Buscar\n4- Atualizar\n5 - Remover\n6 - Voltar"));
+                        "1 - Cadastrar\n2 - Listar\n3 - Buscar\n4 - Atualizar\n5 - Remover\n6 - Voltar"));
 
         parametros.put("opcao", String.valueOf(opcao));
 
@@ -86,7 +86,31 @@ public class UsuarioView {
 
     }
 
-    public static void search(HashMap<String, String> params) {
+    public static HashMap<String, String> update() {
+        HashMap<String, String> parametros = new HashMap<>();
 
+        int codigo = Integer.parseInt(JOptionPane.showInputDialog(
+                "Informe o código do usuário que deseja atualizar os dados:\n(Pode ser visualizado na lista ou na busca)"));
+
+        parametros.put("codigo", String.valueOf(codigo));
+
+        String nome = JOptionPane.showInputDialog("Informe o nome do usuário");
+        parametros.put("nome", nome);
+        String cpf = JOptionPane.showInputDialog("Informe o CPF do usuário");
+        parametros.put("cpf", cpf);
+        String email = JOptionPane.showInputDialog("Informe o email do usuário");
+        parametros.put("email", email);
+
+        return parametros;
+    }
+
+    public static HashMap<String, String> remove() {
+        HashMap<String, String> parametros = new HashMap<>();
+        int codigo = Integer.parseInt(JOptionPane.showInputDialog(
+                "Informe o código do usuário que deseja remover:\n(Pode ser visualizado na lista ou na busca)"));
+
+        parametros.put("codigo", String.valueOf(codigo));
+
+        return parametros;
     }
 }
