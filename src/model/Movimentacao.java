@@ -21,7 +21,7 @@ public class Movimentacao implements Serializable {
     @Column
     private int quantidade;
     // @Column
-    // private int tipomovimentacao_id;
+    // private int tipo_ovimentacao_id;
     // @Column
     // private int operador_id;
     // @Column
@@ -30,7 +30,7 @@ public class Movimentacao implements Serializable {
     // private int item_id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tipomovimentacao_id", referencedColumnName = "tipomovimentacao_id")
+    @JoinColumn(name = "tipo_movimentacao_id", referencedColumnName = "tipo_ovimentacao_id")
     private TipoMovimentacao tipoMovimentacao;
 
     @ManyToOne(cascade = CascadeType.ALL)

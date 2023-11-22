@@ -35,7 +35,7 @@ public class TipoMovimentacaoDAO {
 
     public void removeAll() {
         this.em.getTransaction().begin();
-        this.em.createQuery("delete from tipoMovimentacao").executeUpdate();
+        this.em.createQuery("delete from tipomovimentacao").executeUpdate();
         this.em.flush();
         this.em.getTransaction().commit();
     }

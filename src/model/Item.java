@@ -81,7 +81,6 @@ public class Item implements Serializable {
 
     public int getQuantidade() {
         return this.quantidade_estoque;
-
     }
 
     @Override

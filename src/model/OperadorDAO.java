@@ -31,6 +31,10 @@ public class OperadorDAO {
         return this.dao.list();
     }
 
+    public Operador find(Integer id) {
+        return this.dao.find(id);
+    }
+
     public Operador busca(Integer id) {
         return dao.find(id);
     }
