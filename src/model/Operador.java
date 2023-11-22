@@ -1,16 +1,19 @@
 package model;
 
+import java.util.List;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
 @Table(name = "operador")
-public class Operador {
+public class Operador implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +28,9 @@ public class Operador {
     private float salario;
     @Column
     private java.sql.Date data_contratacao;
+
+    @OneToMany(mappedBy = "operador")
+    private List<Movimentacao> movimentacoes;
 
     public Operador() {
     }
@@ -87,4 +93,8 @@ public class Operador {
         this.data_contratacao = data_contratacao;
     }
 
+    @Override
+    public String toString() {
+        return "Operador" + operador_id + " - " + nome;
+    }
 }

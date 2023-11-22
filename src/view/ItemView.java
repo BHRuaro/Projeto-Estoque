@@ -102,4 +102,9 @@ public class ItemView {
 
         return parametros;
     }
+
+    public static void invalidOption() {
+        JOptionPane.showMessageDialog(null, "Opção inválida");
+        ItemView.init();
+    }
 }

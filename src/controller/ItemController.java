@@ -21,10 +21,10 @@ public class ItemController {
             case 1 -> ItemController.register();
             case 2 -> ItemController.list();
             case 3 -> ItemController.requestSearch();
-            // case 4 -> ItemController.update();
-            // case 5 -> ItemController.remove();
+            case 4 -> ItemController.update();
+            case 5 -> ItemController.remove();
             case 6 -> MainController.init();
-            default -> throw new AssertionError();
+            default -> ItemView.invalidOption();
         }
     }
 
@@ -76,16 +76,16 @@ public class ItemController {
         }
     }
 
-    public static void updateItem(HashMap<String, String> params) {
+    public static void update() {
 
         HashMap<String, String> parametros = new HashMap<>();
         parametros = ItemView.update();
 
         Item item = new Item();
-        item.setItem_id(Integer.parseInt(params.get("codigo")));
-        item.setNome(params.get("nome"));
-        item.setDescricao(params.get("descricao"));
-        item.setPreco(params.get("preco"));
+        item.setItem_id(Integer.parseInt(parametros.get("codigo")));
+        item.setNome(parametros.get("nome"));
+        item.setDescricao(parametros.get("descricao"));
+        item.setPreco(parametros.get("preco"));
         ItemDAO itemDAO = new ItemDAO();
         itemDAO.update(item);
 

@@ -1,13 +1,114 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author bruno
- */
-public class Movimentacao {
-    
+import java.io.Serializable;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.GenerationType;
+
+@Entity
+@Table(name = "movimentacoes")
+public class Movimentacao implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int movimentacao_id;
+    @Column
+    private int quantidade;
+    // @Column
+    // private int tipomovimentacao_id;
+    // @Column
+    // private int operador_id;
+    // @Column
+    // private int usuario_id;
+    // @Column
+    // private int item_id;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tipomovimentacao_id", referencedColumnName = "tipomovimentacao_id")
+    private TipoMovimentacao tipoMovimentacao;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "operador_id", referencedColumnName = "operador_id")
+    private Operador operador;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
+    private Usuario usuario;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "item_id", referencedColumnName = "item_id")
+    private Item item;
+
+    public Movimentacao() {
+    }
+
+    public Movimentacao(int movimentacao_id, TipoMovimentacao tipoMovimentacao, Operador operador, Usuario usuario,
+            Item item) {
+        this.movimentacao_id = movimentacao_id;
+        this.tipoMovimentacao = tipoMovimentacao;
+        this.operador = operador;
+        this.usuario = usuario;
+        this.item = item;
+    }
+
+    public int getMovimentacao_id() {
+        return movimentacao_id;
+    }
+
+    public void setMovimentacao_id(int movimentacao_id) {
+        this.movimentacao_id = movimentacao_id;
+    }
+
+    public TipoMovimentacao getTipoMovimentacao() {
+        return tipoMovimentacao;
+    }
+
+    public void setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
+        this.tipoMovimentacao = tipoMovimentacao;
+    }
+
+    public Operador getOperador() {
+        return operador;
+    }
+
+    public void setOperador(Operador operador_id) {
+        this.operador = operador_id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario_id) {
+        this.usuario = usuario_id;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item_id) {
+        this.item = item_id;
+    }
+
+    public void setQuantidade(String quantidade) {
+        this.quantidade = Integer.parseInt(quantidade);
+    }
+
+    public int getQuantidade() {
+        return this.quantidade;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Tipo da movimentação: " + tipoMovimentacao
+                + ", operador: " + operador + ", usuario: " + usuario + "," + getQuantidade() + item + "\n";
+    }
 }

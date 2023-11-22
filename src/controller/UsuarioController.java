@@ -22,7 +22,7 @@ public class UsuarioController {
             case 4 -> UsuarioController.update();
             case 5 -> UsuarioController.remove();
             case 6 -> MainController.init();
-            default -> throw new AssertionError();
+            default -> UsuarioView.invalidOption();
         }
     }
 

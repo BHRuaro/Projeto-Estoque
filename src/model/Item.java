@@ -1,15 +1,18 @@
 package model;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "item")
-public class Item {
+public class Item implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +22,12 @@ public class Item {
     @Column
     private String descricao;
     @Column
-    private String preco_unitario;
+    private float preco_unitario;
     @Column
-    private String quantidade_estoque;
+    private int quantidade_estoque;
+
+    @OneToMany(mappedBy = "item")
+    private java.util.List<Movimentacao> movimentacoes;
 
     public Item() {
     }
@@ -30,8 +36,8 @@ public class Item {
         this.item_id = item_id;
         this.nome = nome;
         this.descricao = descricao;
-        this.preco_unitario = preco_unitario;
-        this.quantidade_estoque = quantidade_estoque;
+        this.preco_unitario = Float.parseFloat(preco_unitario);
+        this.quantidade_estoque = Integer.parseInt(quantidade_estoque);
     }
 
     public int getItem_id() {
@@ -61,19 +67,19 @@ public class Item {
     }
 
     public void setPreco(String preco_unitario) {
-        this.preco_unitario = preco_unitario;
+        this.preco_unitario = Float.parseFloat(preco_unitario);
     }
 
-    public String getPreco() {
+    public float getPreco() {
         return this.preco_unitario;
 
     }
 
     public void setQuantidade(String quantidade_estoque) {
-        this.quantidade_estoque = quantidade_estoque;
+        this.quantidade_estoque = Integer.parseInt(quantidade_estoque);
     }
 
-    public String getQuantidade() {
+    public int getQuantidade() {
         return this.quantidade_estoque;
 
     }

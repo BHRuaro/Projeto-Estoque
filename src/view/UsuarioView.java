@@ -113,4 +113,9 @@ public class UsuarioView {
 
         return parametros;
     }
+
+    public static void invalidOption() {
+        JOptionPane.showMessageDialog(null, "Opção inválida");
+        UsuarioView.init();
+    }
 }

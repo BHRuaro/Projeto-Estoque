@@ -20,10 +20,10 @@ public class MainController {
         switch (destino) {
             case 1 -> UsuarioController.init();
             case 2 -> ItemController.init();
-            // case 3 -> MovimentacaoController.register();
-            // case 4 -> HistoricoController.register();
-            case 5 -> System.exit(0);
-            default -> throw new AssertionError();
+            case 3 -> MovimentacaoController.init();
+            // case 4 -> HistoricoController.init();
+            case 5 -> MainView.exit();
+            default -> MainView.invalidOption();
         }
     }
 }

@@ -5,20 +5,7 @@ import controller.MainController;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author bruno
- */
 public class MainView {
-    // Login nome + senha do operador
-    // Menu com:
-    // Cadastro de usuario (incluir, updater, buscar e deletar),
-    // Cadastro de produto (incluir, updater, buscar e deletar),
-    // Movimentacoes (entrada e saida de produtos para usuarios),
-    // Historico (Usuario: inclusao/alterao/delecao, Produto:
-    // -----------inclusao/alterao/delecao, Movimentacao: entrada e saida)
-    // Relatorios: Usuario e produto
-    // Sair do sistema
 
     public static void login() {
         boolean login = false;
@@ -37,6 +24,16 @@ public class MainView {
         parameters.put("destino", String.valueOf(destino));
 
         MainController.goTo(parameters);
+    }
+
+    public static void invalidOption() {
+        JOptionPane.showMessageDialog(null, "Opção inválida!");
+        MainView.init();
+    }
+
+    public static void exit() {
+        JOptionPane.showMessageDialog(null, "Saindo do sistema...");
+        System.exit(0);
     }
 
 }
