@@ -13,6 +13,9 @@ import model.UsuarioDAO;
 import model.Usuario;
 import model.Item;
 import java.util.List;
+import model.Historico;
+import model.HistoricoDAO;
+import java.util.Date;
 
 public class MovimentacaoController {
 
@@ -84,6 +87,23 @@ public class MovimentacaoController {
 
         MovimentacaoDAO movimentacaoDAO = new MovimentacaoDAO();
         movimentacaoDAO.add(movimentacao);
+
+        Date data = new Date();
+        Historico historico = new Historico();
+        historico.setData_movimentacao(data);
+        historico.setTipoMovimentacao(tipoMovimentacao);
+        historico.setItem(item);
+        historico.setQuantidade(Integer.parseInt(params.get("quantidade")));
+        if (params.get("usuario") != null) {
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            Usuario usuario = usuarioDAO.find(Integer.parseInt(params.get("usuario")));
+            historico.setUsuario(usuario);
+        }
+        historico.setOperador(movimentacao.getOperador());
+        historico.setMovimentacao(movimentacao);
+
+        HistoricoDAO historicoDAO = new HistoricoDAO();
+        historicoDAO.add(historico);
 
         MovimentacaoView.init();
     }

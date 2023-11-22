@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.util.Date;
 
@@ -24,27 +25,31 @@ public class Historico implements Serializable {
     @Column
     private int quantidade;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "tipomovimentacao_id", referencedColumnName = "tipomovimentacao_id")
     private TipoMovimentacao tipoMovimentacao;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "operador_id", referencedColumnName = "operador_id")
     private Operador operador;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
     private Usuario usuario;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "item_id", referencedColumnName = "item_id")
     private Item item;
+
+    @OneToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "movimentacao_id", referencedColumnName = "movimentacao_id")
+    private Movimentacao movimentacao;
 
     public Historico() {
     }
 
     public Historico(int historico_id, Date data_movimentacao, int quantidade, TipoMovimentacao tipoMovimentacao,
-            Operador operador, Usuario usuario, Item item) {
+            Operador operador, Usuario usuario, Item item, Movimentacao movimentacao) {
         this.historico_id = historico_id;
         this.data_movimentacao = data_movimentacao;
         this.quantidade = quantidade;
@@ -52,6 +57,7 @@ public class Historico implements Serializable {
         this.operador = operador;
         this.usuario = usuario;
         this.item = item;
+        this.movimentacao = movimentacao;
     }
 
     public int getHistorico_id() {
@@ -105,9 +111,7 @@ public class Historico implements Serializable {
     }
 
     public void setUsuario(Usuario usuario) {
-        if (usuario != null) {
-            this.usuario = usuario;
-        }
+        this.usuario = usuario;
     }
 
     public Item getItem() {
@@ -117,6 +121,16 @@ public class Historico implements Serializable {
     public void setItem(Item item) {
         if (item != null) {
             this.item = item;
+        }
+    }
+
+    public Movimentacao getMovimentacao() {
+        return movimentacao;
+    }
+
+    public void setMovimentacao(Movimentacao movimentacao) {
+        if (movimentacao != null) {
+            this.movimentacao = movimentacao;
         }
     }
 
