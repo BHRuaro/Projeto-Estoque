@@ -12,6 +12,7 @@ import model.TipoMovimentacaoDAO;
 import model.UsuarioDAO;
 import model.Usuario;
 import model.Item;
+import java.util.List;
 
 public class MovimentacaoController {
 
@@ -42,10 +43,21 @@ public class MovimentacaoController {
         Movimentacao movimentacao = new Movimentacao();
 
         OperadorDAO operadorDAO = new OperadorDAO();
-        Operador operador = operadorDAO.find(Integer.parseInt(params.get("operador")));
-        movimentacao.setOperador(operador);
+        List<Operador> listaOperador = operadorDAO.list();
+        listaOperador.stream()
+                .filter((operador) -> (operador.getOperador_id() == Integer.parseInt(params.get("operador"))))
+                .forEachOrdered((operador) -> {
+                    movimentacao.setOperador(operador);
+                });
 
         TipoMovimentacaoDAO tipoMovimentacaoDAO = new TipoMovimentacaoDAO();
+        List<TipoMovimentacao> listaTipoMovimentacao = tipoMovimentacaoDAO.list();
+        listaTipoMovimentacao.stream()
+                .filter((tipoMovimentacao) -> (tipoMovimentacao.getTipo_movimentacao_id() == Integer
+                        .parseInt(params.get("tipo"))))
+                .forEachOrdered((tipoMovimentacao) -> {
+                    movimentacao.setTipoMovimentacao(tipoMovimentacao);
+                });
         TipoMovimentacao tipoMovimentacao = tipoMovimentacaoDAO.find(Integer.parseInt(params.get("tipo")));
         movimentacao.setTipoMovimentacao(tipoMovimentacao);
 
@@ -53,12 +65,14 @@ public class MovimentacaoController {
         Item item = itemDAO.find(Integer.parseInt(params.get("codigo")));
 
         if (tipoMovimentacao.getTipo_movimentacao_id() == 1) {
-            item.setQuantidade(Integer.toString(item.getQuantidade() + movimentacao.getQuantidade()));
+            item.setQuantidade(Integer.toString(item.getQuantidade() +
+                    Integer.parseInt(params.get("quantidade"))));
         } else {
-            item.setQuantidade(Integer.toString(item.getQuantidade() - movimentacao.getQuantidade()));
+            item.setQuantidade(Integer.toString(item.getQuantidade() -
+                    Integer.parseInt(params.get("quantidade"))));
         }
-
         movimentacao.setItem(item);
+        itemDAO.update(item);
 
         movimentacao.setQuantidade(params.get("quantidade"));
 
@@ -71,5 +85,6 @@ public class MovimentacaoController {
         MovimentacaoDAO movimentacaoDAO = new MovimentacaoDAO();
         movimentacaoDAO.add(movimentacao);
 
+        MovimentacaoView.init();
     }
 }

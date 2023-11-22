@@ -21,7 +21,7 @@ public class MainController {
             case 1 -> UsuarioController.init();
             case 2 -> ItemController.init();
             case 3 -> MovimentacaoController.init();
-            // case 4 -> HistoricoController.init();
+            case 4 -> HistoricoController.init();
             case 5 -> MainView.exit();
             default -> MainView.invalidOption();
         }

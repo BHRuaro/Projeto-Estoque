@@ -29,19 +29,19 @@ public class Movimentacao implements Serializable {
     // @Column
     // private int item_id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tipo_movimentacao_id", referencedColumnName = "tipo_ovimentacao_id")
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "tipo_movimentacao_id", referencedColumnName = "tipo_movimentacao_id")
     private TipoMovimentacao tipoMovimentacao;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "operador_id", referencedColumnName = "operador_id")
     private Operador operador;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
     private Usuario usuario;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "item_id", referencedColumnName = "item_id")
     private Item item;
 

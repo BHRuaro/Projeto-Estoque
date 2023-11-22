@@ -1,6 +1,7 @@
 package model;
 
 import jakarta.persistence.EntityManager;
+import java.util.List;
 
 public class TipoMovimentacaoDAO {
 
@@ -29,8 +30,8 @@ public class TipoMovimentacaoDAO {
         return dao.find(id);
     }
 
-    public void list() {
-        this.dao.list();
+    public List<TipoMovimentacao> list() {
+        return this.dao.list();
     }
 
     public void removeAll() {
