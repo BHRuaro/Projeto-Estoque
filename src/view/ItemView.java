@@ -36,10 +36,7 @@ public class ItemView {
     public static void list(List<Item> listaItem) {
         String lista = "";
         for (Item item : listaItem) {
-            lista += "Código: " + item.getItem_id() + "\n";
-            lista += "Nome: " + item.getNome() + "\n";
-            lista += "Descrição: " + item.getDescricao() + "\n";
-            lista += "Preço: " + item.getPreco() + "\n\n";
+            lista += item;
         }
         JOptionPane.showMessageDialog(null, lista);
 

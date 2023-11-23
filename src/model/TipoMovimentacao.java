@@ -6,12 +6,13 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 @Entity
-@Table(name = "tipoMovimentacao")
+@Table(name = "tipomovimentacao")
 public class TipoMovimentacao implements Serializable {
 
     @Id
@@ -22,6 +23,9 @@ public class TipoMovimentacao implements Serializable {
 
     @OneToMany(mappedBy = "tipoMovimentacao")
     private List<Movimentacao> movimentacoes;
+
+    @OneToOne(mappedBy = "tipoMovimentacao")
+    private List<Historico> historico;
 
     public TipoMovimentacao() {
     }

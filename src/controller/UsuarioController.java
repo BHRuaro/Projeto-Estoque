@@ -1,6 +1,8 @@
 package controller;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
 import model.Usuario;
 import model.UsuarioDAO;
 import view.UsuarioView;
@@ -43,7 +45,11 @@ public class UsuarioController {
 
     public static void list() {
         List<Usuario> listaUsuario = usuarioDAO.list();
-        UsuarioView.list(listaUsuario);
+        StringBuilder lista = new StringBuilder();
+        listaUsuario.stream().sorted(Comparator.comparing(Usuario::getUsuario_id)).forEach(usuario -> {
+            lista.append(usuario);
+        });
+        UsuarioView.list(lista.toString());
     }
 
     public static void requestSearch() {
@@ -56,19 +62,28 @@ public class UsuarioController {
         switch (opcao) {
             case 1:
                 usuario = usuarioDAO.find(Integer.parseInt(params.get("codigo")));
-                UsuarioView.list(Arrays.asList(usuario));
+                UsuarioView.list(usuario.toString());
                 break;
             case 2:
                 List<Usuario> listaUsuarioNome = usuarioDAO.searchName(params.get("nome"));
-                UsuarioView.list(listaUsuarioNome);
+                String listaUsuarioNomeStr = listaUsuarioNome.stream()
+                        .map(Usuario::toString)
+                        .collect(Collectors.joining("\n"));
+                UsuarioView.list(listaUsuarioNomeStr);
                 break;
             case 3:
                 List<Usuario> listaUsuarioCPF = usuarioDAO.searchCPF(params.get("cpf"));
-                UsuarioView.list(listaUsuarioCPF);
+                String listaUsuarioCPFStr = listaUsuarioCPF.stream()
+                        .map(Usuario::toString)
+                        .collect(Collectors.joining("\n"));
+                UsuarioView.list(listaUsuarioCPFStr);
                 break;
             case 4:
                 List<Usuario> listaUsuarioEmail = usuarioDAO.searchEmail(params.get("email"));
-                UsuarioView.list(listaUsuarioEmail);
+                String listaUsuarioEmailStr = listaUsuarioEmail.stream()
+                        .map(Usuario::toString)
+                        .collect(Collectors.joining("\n"));
+                UsuarioView.list(listaUsuarioEmailStr);
                 break;
             case 5:
                 UsuarioView.init();

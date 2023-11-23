@@ -74,7 +74,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Código:" + this.usuario_id + "\nNome:" + this.nome + "\nCPF:" + this.cpf + "\nEmail:" + this.email
-                + "\n\n";
+        return "Código: " + this.usuario_id + "\nNome: " + this.nome + "\nCPF: " + this.cpf + "\nEmail: " + this.email
+                + "\n";
     }
 }

@@ -13,6 +13,8 @@
     <class>model.Movimentacao</class>
     <class>model.TipoMovimentacao</class>
     <class>model.TipoMovimentacaoDAO</class>
+    <class>model.Historico</class>
+    <class>model.HistoricoDAO</class>
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <properties>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/ProjetoEstoque"/>

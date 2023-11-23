@@ -31,15 +31,8 @@ public class UsuarioView {
         UsuarioController.insert(parametros);
     }
 
-    public static void list(List<Usuario> listaUsuario) {
-        String lista = "";
-        for (Usuario usuario : listaUsuario) {
-            lista += "Código: " + usuario.getUsuario_id() + "\n";
-            lista += "Nome: " + usuario.getNome() + "\n";
-            lista += "CPF: " + usuario.getCpf() + "\n";
-            lista += "Email: " + usuario.getEmail() + "\n\n";
-        }
-        JOptionPane.showMessageDialog(null, lista);
+    public static void list(String lista) {
+        JOptionPane.showMessageDialog(null, lista.toString());
 
         UsuarioView.init();
     }

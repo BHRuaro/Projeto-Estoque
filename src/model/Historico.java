@@ -23,10 +23,10 @@ public class Historico implements Serializable {
     @Column
     private Date data_movimentacao;
     @Column
-    private int quantidade;
+    private int quantidade_movimentada;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "tipomovimentacao_id", referencedColumnName = "tipomovimentacao_id")
+    @JoinColumn(name = "tipo_movimentacao_id", referencedColumnName = "tipo_movimentacao_id")
     private TipoMovimentacao tipoMovimentacao;
 
     @ManyToOne(cascade = CascadeType.DETACH)
@@ -52,7 +52,7 @@ public class Historico implements Serializable {
             Operador operador, Usuario usuario, Item item, Movimentacao movimentacao) {
         this.historico_id = historico_id;
         this.data_movimentacao = data_movimentacao;
-        this.quantidade = quantidade;
+        this.quantidade_movimentada = quantidade;
         this.tipoMovimentacao = tipoMovimentacao;
         this.operador = operador;
         this.usuario = usuario;
@@ -77,12 +77,12 @@ public class Historico implements Serializable {
     }
 
     public int getQuantidade() {
-        return quantidade;
+        return quantidade_movimentada;
     }
 
     public void setQuantidade(int quantidade) {
         if (quantidade > 0) {
-            this.quantidade = quantidade;
+            this.quantidade_movimentada = quantidade;
         }
     }
 
@@ -136,7 +136,8 @@ public class Historico implements Serializable {
 
     @Override
     public String toString() {
-        return "Historico" + historico_id + " - " + data_movimentacao + " - " + quantidade + " - " + tipoMovimentacao
+        return "Historico" + historico_id + " - " + data_movimentacao + " - " + quantidade_movimentada + " - "
+                + tipoMovimentacao
                 + " - " + operador + " - " + usuario + " - " + item;
     }
 }

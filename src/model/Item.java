@@ -86,6 +86,6 @@ public class Item implements Serializable {
     @Override
     public String toString() {
         return "Código:" + this.item_id + "\nNome:" + this.nome + "\nDescrição:" + this.descricao + "\nPreço:"
-                + this.preco_unitario + "\nQuantidade:" + this.quantidade_estoque + "\n\n";
+                + this.preco_unitario + "\nQuantidade em estoque: " + this.quantidade_estoque + "\n\n";
     }
 }
